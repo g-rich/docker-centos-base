@@ -1,9 +1,6 @@
 ---
 # file: roles/common/tasks/main.yml
 
-- name: upgrade all packages
-  yum: name=* state=latest
-
 - name: Install the common packages
   yum: name={{ item }} state=latest
   with_items:
@@ -14,4 +11,13 @@
     - vi
 
 - name: Download confd binary
-  get_url: url=https://github.com/kelseyhightower/confd/releases/download/v0.3.0/confd_0.3.0_linux_amd64.tar.gz dest=/tmp/confd_0.3.0_linux_amd64.tar.gz mode=0440
+  get_url: url=https://github.com/kelseyhightower/confd/releases/download/v0.3.0/confd_0.3.0_linux_amd64.tar.gz dest=/tmp/confd_0.3.0_linux_amd64.tar.gz mode=0744
+
+- name: Extract confd binary
+  unarchive: src=/tmp/confd_0.3.0_linux_amd64.tar.gz dest=/usr/local/bin copy=no
+
+- name: Create confd directories
+  file: path={{item}} state=directory mode=0744
+  with_items:
+    - /etc/confd/templates
+    - /etc/confd/conf.d  
