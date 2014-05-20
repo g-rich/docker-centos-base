@@ -6,7 +6,7 @@
         "type": "docker",
         "image": "centos",
         "pull": true,
-        "export_path": "centos-base.tar"
+        "export_path": "centos-base-{{user `version`}}.tar"
     }],
     "provisioners":[
         {
