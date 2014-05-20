@@ -1,0 +1,35 @@
+{
+    "variables": {
+        "version": ""
+    },
+    "builders":[{
+        "type": "docker",
+        "image": "centos",
+        "pull": true,
+        "export_path": "centos-base.tar"
+    }],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "yum -y update",
+                "yum -y install ansible python-setuptools",
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "playbooks/local.yml",
+            "role_paths":[
+                "roles/*"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "docker-import",
+            "repository": "mohitarora/centos-base",
+            "tag": "{{user `version`}}"
+        },
+        "docker-push"
+    ]
+}
