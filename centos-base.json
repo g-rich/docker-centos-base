@@ -20,7 +20,7 @@
             "type": "ansible-local",
             "playbook_file": "playbooks/local.yml",
             "role_paths":[
-                "roles/*"
+                "roles/common"
             ]
         }
     ],
