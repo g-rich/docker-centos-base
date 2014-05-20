@@ -13,7 +13,7 @@
             "type": "shell",
             "inline": [
                 "yum -y update",
-                "yum -y install ansible python-setuptools",
+                "yum -y install ansible python-setuptools"
             ]
         },
         {
