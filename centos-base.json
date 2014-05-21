@@ -30,7 +30,6 @@
             "type": "docker-import",
             "repository": "mohitarora/centos-base",
             "tag": "{{user `version`}}"
-        },
-        "docker-push"
+        }
     ]
 }
