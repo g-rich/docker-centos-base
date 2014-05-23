@@ -4,7 +4,7 @@
     },
     "builders":[{
         "type": "docker",
-        "image": "centos",
+        "image": "centos:latest",
         "pull": true,
         "export_path": "centos-base-{{user `version`}}.tar"
     }],
