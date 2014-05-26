@@ -17,4 +17,5 @@ Ansible command that packer runs inside docker container
 
 ```
 $ ansible-playbook {{.PlaybookFile}} -c local -i "127.0.0.1,"
+
 ```
